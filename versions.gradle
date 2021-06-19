@@ -1,0 +1,27 @@
+def build_versions = [:]
+build_versions.min_sdk_version = 21
+build_versions.compile_sdk_version = 30
+build_versions.target_sdk_version = 30
+build_versions.build_tools_version = "30.0.3"
+build_versions.version_code = 1
+build_versions.version_name = "1.0"
+ext.build_versions = build_versions
+
+ext {
+    vGradle = "4.2.1"
+    vKotlin = "1.5.10"
+}
+
+static def addRepos(RepositoryHandler handler) {
+    handler.jcenter()
+    handler.google()
+    handler.mavenCentral()
+    handler.mavenLocal()
+    handler.maven {
+        url 'https://jcenter.bintray.com'
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+        url 'https://jitpack.io'
+    }
+}
+
+ext.addRepos = this.&addRepos
